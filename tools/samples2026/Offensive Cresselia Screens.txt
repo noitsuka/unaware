@@ -1,0 +1,64 @@
+Raging Bolt @ Booster Energy
+Ability: Protosynthesis
+Tera Type: Fairy
+EVs: 248 HP / 8 Def / 252 SpA
+Modest Nature
+IVs: 20 Atk
+- Calm Mind
+- Thunderbolt
+- Thunderclap
+- Dragon Pulse
+
+Ogerpon-Wellspring (F) @ Wellspring Mask
+Ability: Water Absorb
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Taunt
+- Ivy Cudgel
+- Knock Off
+- Power Whip
+
+Zamazenta @ Light Clay
+Ability: Dauntless Shield
+Shiny: Yes
+Tera Type: Steel
+EVs: 104 HP / 248 Def / 156 Spe
+Jolly Nature
+- Reflect
+- Light Screen
+- Body Press
+- Heavy Slam
+
+Cresselia @ Leftovers
+Ability: Levitate
+Shiny: Yes
+Tera Type: Fairy
+EVs: 172 HP / 252 SpA / 84 Spe
+Modest Nature
+IVs: 0 Atk
+- Stored Power
+- Moonblast
+- Lunar Blessing
+- Calm Mind
+
+Glimmora (M) @ Red Card
+Ability: Toxic Debris
+Shiny: Yes
+Tera Type: Ghost
+EVs: 248 HP / 252 Def / 8 SpD
+Bold Nature
+- Stealth Rock
+- Spikes
+- Mortal Spin
+- Earth Power
+
+Kingambit (M) @ Leftovers
+Ability: Supreme Overlord
+Shiny: Yes
+Tera Type: Fire
+EVs: 248 HP / 252 Atk / 8 Def
+Adamant Nature
+- Swords Dance
+- Iron Head
+- Low Kick
+- Sucker Punch

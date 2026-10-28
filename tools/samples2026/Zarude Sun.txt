@@ -1,0 +1,61 @@
+Walking Wake @ Wise Glasses
+Ability: Protosynthesis
+Tera Type: Fairy
+EVs: 12 HP / 244 SpA / 252 Spe
+Timid Nature
+- Hydro Steam
+- Draco Meteor
+- Dragon Tail
+- Weather Ball
+
+Great Tusk @ Assault Vest
+Ability: Protosynthesis
+Tera Type: Steel
+EVs: 52 HP / 252 Atk / 204 Spe
+Adamant Nature
+- Headlong Rush
+- Ice Spinner
+- Rapid Spin
+- Close Combat
+
+Ninetales @ Heat Rock
+Ability: Drought
+Tera Type: Fairy
+EVs: 192 HP / 72 SpA / 244 Spe
+Timid Nature
+IVs: 0 Atk
+- Overheat
+- Encore
+- Healing Wish
+- Will-O-Wisp
+
+Cresselia @ Eject Button
+Ability: Levitate
+Tera Type: Ghost
+EVs: 252 HP / 180 Def / 56 SpD / 20 Spe
+Calm Nature
+IVs: 0 Atk
+- Psychic
+- Lunar Dance
+- Moonlight
+- Thunder Wave
+
+Zarude @ Leftovers
+Ability: Leaf Guard
+Tera Type: Poison
+EVs: 32 HP / 252 Atk / 4 Def / 16 SpD / 204 Spe
+Jolly Nature
+- Knock Off
+- Synthesis
+- Swords Dance
+- Power Whip
+
+Ceruledge @ Focus Sash
+Ability: Weak Armor
+Tera Type: Fairy
+EVs: 252 Atk / 4 SpD / 252 Spe
+Adamant Nature
+- Swords Dance
+- Bitter Blade
+- Poltergeist
+- Close Combat

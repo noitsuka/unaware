@@ -1,0 +1,50 @@
+{
+  "Starter HO.txt": {
+    "format_id": "gen9ou",
+    "archetype": "hyper_offense"
+  },
+  "Starter Bulky Offense.txt": {
+    "format_id": "gen9ou",
+    "archetype": "bulky_offense"
+  },
+  "Starter Balance.txt": {
+    "format_id": "gen9ou",
+    "archetype": "balance"
+  },
+  "Starter Semi-Stall.txt": {
+    "format_id": "gen9ou",
+    "archetype": "semi_stall"
+  },
+  "Starter Stall.txt": {
+    "format_id": "gen9ou",
+    "archetype": "stall"
+  },
+  "Starter Rain.txt": {
+    "format_id": "gen9ou",
+    "archetype": "weather"
+  },
+  "SCL - W4 vs Santu HMErKaKG.txt": {
+    "format_id": "gen9ou",
+    "archetype": "semi_stall"
+  },
+  "Ebelt Zama Offense by MAVE 61OXI50o.txt": {
+    "format_id": "gen9ou",
+    "archetype": "bulky_offense"
+  },
+  "Bellibolt Rain 2062 by rza.txt": {
+    "format_id": "gen9ou",
+    "archetype": "weather"
+  },
+  "Booster Spam Iron Boulder by rza.txt": {
+    "format_id": "gen9ou",
+    "archetype": "hyper_offense"
+  },
+  "Samurott Blissey Ogerpon Fat Balance (Smogon).txt": {
+    "format_id": "gen9ou",
+    "archetype": "balance"
+  },
+  "Dragonite Heatran Anti-Offense by ABR and Axzel.txt": {
+    "format_id": "gen9ou",
+    "archetype": "balance"
+  }
+}

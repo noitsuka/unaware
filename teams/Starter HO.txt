@@ -1,0 +1,66 @@
+Cresselia @ Leftovers
+Ability: Levitate
+Shiny: Yes
+EVs: 252 HP / 92 Def / 152 SpA / 12 Spe
+Bold Nature
+- Psyshock
+- Ice Beam
+- Calm Mind
+- Moonlight
+
+Lokix @ Life Orb
+Ability: Tinted Lens
+Shiny: Yes
+Tera Type: Dark
+EVs: 252 Atk / 4 SpD / 252 Spe
+Adamant Nature
+- Swords Dance
+- Leech Life
+- Knock Off
+- Sucker Punch
+
+Great Tusk @ Booster Energy
+Ability: Protosynthesis
+Shiny: Yes
+Tera Type: Fighting
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Headlong Rush
+- Close Combat
+- Rapid Spin
+- Head Smash
+
+Raging Bolt @ Booster Energy
+Ability: Protosynthesis
+Tera Type: Ghost
+EVs: 4 Def / 252 SpA / 252 Spe
+Modest Nature
+IVs: 20 Atk
+- Calm Mind
+- Thunderclap
+- Dragon Pulse
+- Thunderbolt
+
+Gholdengo @ Air Balloon
+Ability: Good as Gold
+Shiny: Yes
+Tera Type: Fairy
+EVs: 252 SpA / 4 SpD / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Nasty Plot
+- Shadow Ball
+- Psyshock
+- Dazzling Gleam
+
+Iron Moth @ Booster Energy
+Ability: Quark Drive
+Shiny: Yes
+Tera Type: Fairy
+EVs: 252 SpA / 4 SpD / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Dazzling Gleam
+- Energy Ball
+- Fiery Dance
+- Sludge Wave

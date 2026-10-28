@@ -1,0 +1,63 @@
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Dragon
+EVs: 248 HP / 252 Def / 8 SpD
+Impish Nature
+- Body Press
+- Avalanche
+- Rest
+- Sleep Talk
+
+Blissey @ Leftovers
+Ability: Natural Cure
+Tera Type: Dark
+EVs: 20 HP / 252 Def / 236 SpD
+Calm Nature
+IVs: 0 Atk
+- Seismic Toss
+- Soft-Boiled
+- Calm Mind
+- Stealth Rock
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Water
+EVs: 244 HP / 12 Def / 252 SpD
+Careful Nature
+IVs: 24 Spe
+- Earthquake
+- Spikes
+- Knock Off
+- Protect
+
+Toxapex @ Black Sludge
+Ability: Regenerator
+Tera Type: Ghost
+EVs: 252 HP / 124 Def / 132 SpD
+Calm Nature
+IVs: 0 Atk
+- Sludge Bomb
+- Recover
+- Toxic Spikes
+- Surf
+
+Mandibuzz @ Heavy-Duty Boots
+Ability: Big Pecks
+Tera Type: Steel
+EVs: 252 HP / 100 Def / 140 SpD / 16 Spe
+Careful Nature
+- Toxic
+- Roost
+- Knock Off
+- Defog
+
+Talonflame @ Heavy-Duty Boots
+Ability: Flame Body
+Tera Type: Dragon
+EVs: 248 HP / 228 Def / 32 Spe
+Bold Nature
+IVs: 0 Atk
+- Will-O-Wisp
+- Overheat
+- Roost
+- Defog

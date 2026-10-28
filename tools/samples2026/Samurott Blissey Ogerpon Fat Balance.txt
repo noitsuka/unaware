@@ -1,0 +1,62 @@
+Ogerpon (F) @ Heavy-Duty Boots
+Ability: Defiant
+Tera Type: Grass
+EVs: 4 HP / 252 Atk / 252 Spe
+Adamant Nature
+- Ivy Cudgel
+- Knock Off
+- U-turn
+- Encore
+
+Samurott-Hisui (F) @ Heavy-Duty Boots
+Ability: Sharpness
+Tera Type: Water
+EVs: 252 Atk / 4 SpD / 252 Spe
+Adamant Nature
+- Ceaseless Edge
+- Aqua Cutter
+- Knock Off
+- Encore
+
+Blissey @ Heavy-Duty Boots
+Ability: Natural Cure
+Tera Type: Poison
+EVs: 4 HP / 252 Def / 252 SpD
+Calm Nature
+IVs: 0 Atk / 30 Spe
+- Calm Mind
+- Seismic Toss
+- Shadow Ball
+- Soft-Boiled
+
+Gliscor (F) @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Normal
+EVs: 252 HP / 252 SpD / 4 Spe
+Careful Nature
+- Swords Dance
+- Earthquake
+- Facade
+- Protect
+
+Skarmory (F) @ Heavy-Duty Boots
+Ability: Sturdy
+Tera Type: Ghost
+EVs: 248 HP / 252 Def / 8 Spe
+Bold Nature
+IVs: 0 Atk
+- Stealth Rock
+- Body Press
+- Whirlwind
+- Roost
+
+Pecharunt @ Heavy-Duty Boots
+Ability: Poison Puppeteer
+Tera Type: Ghost
+EVs: 248 HP / 216 Def / 44 Spe
+Bold Nature
+IVs: 0 Atk
+- Shadow Ball
+- Toxic
+- Parting Shot
+- Recover

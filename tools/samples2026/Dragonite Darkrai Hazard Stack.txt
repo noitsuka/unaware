@@ -1,0 +1,61 @@
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Fairy
+EVs: 244 HP / 236 Def / 12 SpD / 16 Spe
+Impish Nature
+IVs: 25 Spe
+- Toxic
+- Spikes
+- Earthquake
+- Protect
+
+Gholdengo @ Choice Scarf
+Ability: Good as Gold
+Tera Type: Steel
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Recover
+- Shadow Ball
+- Make It Rain
+- Trick
+
+Dragonite @ Heavy-Duty Boots
+Ability: Multiscale
+Tera Type: Normal
+EVs: 196 HP / 204 Atk / 108 Spe
+Adamant Nature
+- Dragon Dance
+- Earthquake
+- Extreme Speed
+- Roost
+
+Ting-Lu @ Leftovers
+Ability: Vessel of Ruin
+Tera Type: Water
+EVs: 252 HP / 252 SpD / 4 Spe
+Careful Nature
+- Stealth Rock
+- Whirlwind
+- Ruination
+- Earthquake
+
+Darkrai @ Heavy-Duty Boots
+Ability: Bad Dreams
+Tera Type: Fairy
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+- Knock Off
+- Will-O-Wisp
+- Ice Beam
+- Dark Pulse
+
+Zamazenta @ Heavy-Duty Boots
+Ability: Dauntless Shield
+Tera Type: Ice
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Close Combat
+- Stone Edge
+- Heavy Slam
+- Ice Fang

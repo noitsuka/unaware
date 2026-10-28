@@ -1,0 +1,61 @@
+Weezing-Galar @ Leftovers
+Ability: Neutralizing Gas
+Tera Type: Grass
+EVs: 248 HP / 240 Def / 20 Spe
+Bold Nature
+IVs: 0 Atk
+- Toxic
+- Will-O-Wisp
+- Protect
+- Defog
+
+Alomomola @ Rocky Helmet
+Ability: Regenerator
+Tera Type: Ghost
+EVs: 12 HP / 244 Def / 252 SpD
+Relaxed Nature
+IVs: 0 Spe
+- Tickle
+- Flip Turn
+- Wish
+- Protect
+
+Iron Treads @ Leftovers
+Ability: Quark Drive
+Tera Type: Ice
+EVs: 156 HP / 64 Atk / 96 SpD / 192 Spe
+Jolly Nature
+- Stealth Rock
+- Earthquake
+- Ice Spinner
+- Rapid Spin
+
+Tornadus-Therian @ Assault Vest
+Ability: Regenerator
+Tera Type: Water
+EVs: 248 HP / 20 Def / 240 Spe
+Timid Nature
+- Bleakwind Storm
+- U-turn
+- Knock Off
+- Heat Wave
+
+Zamazenta @ Choice Band
+Ability: Dauntless Shield
+Tera Type: Dark
+EVs: 252 Atk / 4 SpD / 252 Spe
+Adamant Nature
+- Close Combat
+- Stone Edge
+- Crunch
+- Heavy Slam
+
+Lokix @ Choice Band
+Ability: Tinted Lens
+Tera Type: Bug
+EVs: 252 Atk / 4 SpD / 252 Spe
+Adamant Nature
+- First Impression
+- U-turn
+- Knock Off
+- Leech Life

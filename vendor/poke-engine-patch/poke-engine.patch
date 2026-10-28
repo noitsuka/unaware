@@ -1,0 +1,535 @@
+--- a/src/mcts.rs
++++ b/src/mcts.rs
+@@ -78,26 +78,69 @@
+         choice
+     }
+ 
++    // Regret matching for simultaneous moves (Jaxcalibur-style pUCT variant
++    // with a uniform prior): pi(a) ~ max(Q(a) - V, 0) + c / sqrt(N) * 1/K,
++    // sampled. Unlike decoupled UCB1 it converges to an equilibrium of the
++    // simultaneous choice instead of best-responding to the average.
++    pub fn regret_matching_for_side(
++        &self,
++        side_map: &[MoveNode],
++        c: f32,
++        rng: &mut impl Rng,
++    ) -> usize {
++        let (total, visits) = side_map
++            .iter()
++            .fold((0.0f32, 0u32), |(t, v), n| (t + n.total_score, v + n.visits));
++        let value = if visits > 0 { total / visits as f32 } else { 0.5 };
++        let explore = c / ((self.times_visited as f32) + 1.0).sqrt() / side_map.len() as f32;
++        let weights: Vec<f32> = side_map
++            .iter()
++            .map(|n| {
++                let q = if n.visits > 0 { n.total_score / n.visits as f32 } else { value };
++                (q - value).max(0.0) + explore
++            })
++            .collect();
++        let sum: f32 = weights.iter().sum();
++        let mut threshold = rng.random_range(0.0..sum);
++        for (index, w) in weights.iter().enumerate() {
++            threshold -= w;
++            if threshold <= 0.0 {
++                return index;
++            }
++        }
++        side_map.len() - 1
++    }
++
+     pub unsafe fn selection(
+         &mut self,
+         state: &mut State,
+         children: &mut HashMap<(usize, usize, usize), Box<[Node]>>,
+         rng: &mut impl Rng,
++        rm_c: f32,
+     ) -> (*mut Node, usize, usize) {
+         if self.s1_options.is_none() {
+             let (s1_options, s2_options) = state.get_all_options();
+             self.populate(s1_options, s2_options);
+         }
+ 
+-        let s1_mc_index = self.maximize_ucb_for_side(self.s1_options.as_ref().unwrap());
+-        let s2_mc_index = self.maximize_ucb_for_side(self.s2_options.as_ref().unwrap());
++        let (s1_mc_index, s2_mc_index) = if rm_c > 0.0 {
++            (
++                self.regret_matching_for_side(self.s1_options.as_ref().unwrap(), rm_c, rng),
++                self.regret_matching_for_side(self.s2_options.as_ref().unwrap(), rm_c, rng),
++            )
++        } else {
++            (
++                self.maximize_ucb_for_side(self.s1_options.as_ref().unwrap()),
++                self.maximize_ucb_for_side(self.s2_options.as_ref().unwrap()),
++            )
++        };
+         let key = (self as *mut Node as usize, s1_mc_index, s2_mc_index);
+         match children.get_mut(&key) {
+             Some(child_vector) => {
+                 let child_vec_ptr = child_vector as *mut Box<[Node]>;
+                 let chosen_child = self.sample_node(child_vec_ptr, rng);
+                 state.apply_instructions(&(*chosen_child).instructions.instruction_list);
+-                (*chosen_child).selection(state, children, rng)
++                (*chosen_child).selection(state, children, rng, rm_c)
+             }
+             None => (self as *mut Node, s1_mc_index, s2_mc_index),
+         }
+@@ -253,8 +296,10 @@
+     root_eval: &f32,
+     children: &mut HashMap<(usize, usize, usize), Box<[Node]>>,
+     rng: &mut impl Rng,
++    rm_c: f32,
+ ) {
+-    let (mut new_node, s1_move, s2_move) = unsafe { root_node.selection(state, children, rng) };
++    let (mut new_node, s1_move, s2_move) =
++        unsafe { root_node.selection(state, children, rng, rm_c) };
+     new_node = unsafe { (*new_node).expand(state, s1_move, s2_move, children, rng) };
+     let rollout_result = unsafe { (*new_node).rollout(state, root_eval) };
+     unsafe { (*new_node).backpropagate(rollout_result, state) }
+@@ -271,12 +316,13 @@
+     root_eval: &f32,
+     children: &mut HashMap<(usize, usize, usize), Box<[Node]>>,
+     limit: SearchLimit,
++    rm_c: f32,
+ ) {
+     let mut rng = rng();
+     let start_time = std::time::Instant::now();
+     loop {
+         for _ in 0..1000 {
+-            mcts_iteration(root_node, state, root_eval, children, &mut rng);
++            mcts_iteration(root_node, state, root_eval, children, &mut rng, rm_c);
+         }
+         if root_node.times_visited >= 10_000_000 {
+             break;
+@@ -303,6 +349,26 @@
+     max_time: Duration,
+     max_iterations: u32,
+ ) -> MctsResult {
++    perform_mcts_with_selection(
++        state,
++        side_one_options,
++        side_two_options,
++        max_time,
++        max_iterations,
++        0.0,
++    )
++}
++
++/// rm_c = 0: decoupled UCB1 (original). rm_c > 0: regret matching with this
++/// exploration constant.
++pub fn perform_mcts_with_selection(
++    state: &mut State,
++    side_one_options: Vec<MoveChoice>,
++    side_two_options: Vec<MoveChoice>,
++    max_time: Duration,
++    max_iterations: u32,
++    rm_c: f32,
++) -> MctsResult {
+     let mut root_node = Node::new();
+     unsafe {
+         root_node.populate(side_one_options, side_two_options);
+@@ -322,6 +388,7 @@
+         &root_eval,
+         &mut children,
+         search_limit,
++        rm_c,
+     );
+ 
+     let result = MctsResult {
+--- a/src/genx/evaluate.rs
++++ b/src/genx/evaluate.rs
+@@ -2,7 +2,9 @@
+ use super::items::Items;
+ use super::state::PokemonVolatileStatus;
+ use crate::choices::MoveCategory;
+-use crate::state::{Pokemon, PokemonStatus, Side, State};
++use super::damage_calc::type_effectiveness_modifier;
++use crate::choices::Choices;
++use crate::state::{Pokemon, PokemonStatus, PokemonType, Side, State};
+ 
+ const POKEMON_ALIVE: f32 = 30.0;
+ const POKEMON_HP: f32 = 100.0;
+@@ -51,6 +53,11 @@
+ const TOXIC_SPIKES: f32 = -7.0;
+ const STICKY_WEB: f32 = -25.0;
+ 
++// unaware: recovery PP has value, so healing at high HP has a cost and a
++// stall war is not lost by running out of Recover/Roost/Soft-Boiled.
++const RECOVERY_PP: f32 = 2.0;
++const RECOVERY_PP_CAP: i8 = 8;
++
+ fn evaluate_poison(pokemon: &Pokemon, base_score: f32) -> f32 {
+     match pokemon.ability {
+         Abilities::POISONHEAL => 15.0,
+@@ -113,7 +120,10 @@
+     let pkmn_is_grounded = pokemon.is_grounded();
+     if pokemon.item != Items::HEAVYDUTYBOOTS {
+         if pokemon.ability != Abilities::MAGICGUARD {
+-            score += side.side_conditions.stealth_rock as f32 * STEALTH_ROCK;
++            // unaware: Stealth Rock weighs by the Rock weakness (x0.25 .. x4).
++            score += side.side_conditions.stealth_rock as f32
++                * STEALTH_ROCK
++                * type_effectiveness_modifier(&PokemonType::ROCK, pokemon);
+             if pkmn_is_grounded {
+                 score += side.side_conditions.spikes as f32 * SPIKES;
+                 score += side.side_conditions.toxic_spikes as f32 * TOXIC_SPIKES;
+@@ -130,6 +140,15 @@
+ fn evaluate_pokemon(pokemon: &Pokemon) -> f32 {
+     let mut score = 0.0;
+     score += POKEMON_HP * pokemon.hp as f32 / pokemon.maxhp as f32;
++    for mv in [&pokemon.moves.m0, &pokemon.moves.m1, &pokemon.moves.m2, &pokemon.moves.m3] {
++        if matches!(mv.id, Choices::RECOVER | Choices::ROOST | Choices::SOFTBOILED | Choices::WISH
++            | Choices::SLACKOFF | Choices::MOONLIGHT | Choices::MORNINGSUN | Choices::SYNTHESIS
++            | Choices::MILKDRINK | Choices::SHOREUP | Choices::STRENGTHSAP | Choices::LUNARBLESSING
++            | Choices::JUNGLEHEALING | Choices::LIFEDEW)
++        {
++            score += RECOVERY_PP * mv.pp.clamp(0, RECOVERY_PP_CAP) as f32;
++        }
++    }
+ 
+     match pokemon.status {
+         PokemonStatus::BURN => score += evaluate_burned(pokemon),
+--- a/poke-engine-py/src/lib.rs
++++ b/poke-engine-py/src/lib.rs
+@@ -11,7 +11,7 @@
+ use poke_engine::engine::items::Items;
+ use poke_engine::engine::state::{MoveChoice, PokemonVolatileStatus, Terrain, Weather};
+ use poke_engine::instruction::{Instruction, StateInstructions};
+-use poke_engine::mcts::{perform_mcts, MctsResult, MctsSideResult};
++use poke_engine::mcts::{perform_mcts_with_selection, MctsResult, MctsSideResult};
+ use poke_engine::mcts_threaded::perform_mcts_shared_tree;
+ use poke_engine::pokemon::PokemonName;
+ use poke_engine::search::iterative_deepen_expectiminimax;
+@@ -927,11 +927,13 @@
+ }
+ 
+ #[pyfunction]
++#[pyo3(signature = (py_state, duration_ms, iterations, threads, rm_c=0.0))]
+ fn mcts(
+     py_state: PyState,
+     duration_ms: u64,
+     mut iterations: u32,
+     threads: usize,
++    rm_c: f32,
+ ) -> PyResult<PyMctsResult> {
+     let mut state: State = py_state.into();
+     let duration = Duration::from_millis(duration_ms);
+@@ -939,12 +941,12 @@
+     if s1_options.len() <= 1 {
+         iterations = 100; // if there's only one option, force a quick exit
+     }
+-    let mcts_result = if threads > 1 {
++    let mcts_result = if threads > 1 && rm_c <= 0.0 {
+         perform_mcts_shared_tree(
+             &mut state, s1_options, s2_options, duration, iterations, threads,
+         )
+     } else {
+-        perform_mcts(&mut state, s1_options, s2_options, duration, iterations)
++        perform_mcts_with_selection(&mut state, s1_options, s2_options, duration, iterations, rm_c)
+     };
+ 
+     let py_mcts_result = PyMctsResult::from_mcts_result(mcts_result, &state);
+@@ -1123,6 +1125,262 @@
+     Ok((s1_py_rolls, s2_py_rolls))
+ }
+ 
++
++
++// Observation for the network, from one player's point of view (perspective 1 or 2).
++// ints: 12 Pokémon (own then foe, own active first) x 10 ids
++//       [species, type1, type2, tera_type, item, ability, move0..move3] + [weather, terrain]
++// mon floats: 12 x 48; global floats: 40.
++pub const OBS_INTS_PER_MON: usize = 10;
++pub const OBS_FLOATS_PER_MON: usize = 48;
++pub const OBS_GLOBAL_FLOATS: usize = 40;
++
++fn order(side: &Side) -> [usize; 6] {
++    let active = side.active_index as usize;
++    let mut out = [active, 0, 0, 0, 0, 0];
++    let mut k = 1;
++    for i in 0..6 { if i != active { out[k] = i; k += 1; } }
++    out
++}
++
++fn encode_mon(p: &Pokemon, active: bool, ints: &mut Vec<i32>, floats: &mut Vec<f32>) {
++    let moves = [&p.moves.m0, &p.moves.m1, &p.moves.m2, &p.moves.m3];
++    ints.push(p.id.clone() as i32);
++    ints.push(p.types.0.clone() as i32);
++    ints.push(p.types.1.clone() as i32);
++    ints.push(p.tera_type.clone() as i32);
++    ints.push(p.item.clone() as i32);
++    ints.push(p.ability.clone() as i32);
++    for m in moves.iter() { ints.push(m.id.clone() as i32); }
++    let alive = p.hp > 0;
++    floats.push(if p.maxhp > 0 { p.hp.max(0) as f32 / p.maxhp as f32 } else { 0.0 });
++    floats.push(alive as i32 as f32);
++    floats.push(active as i32 as f32);
++    floats.push(p.terastallized as i32 as f32);
++    let status = p.status.clone() as usize;
++    for k in 0..7 { floats.push((status == k) as i32 as f32); }
++    for stat in [p.attack, p.defense, p.special_attack, p.special_defense, p.speed] { floats.push(stat as f32 / 500.0); }
++    for m in moves.iter() { floats.push((m.pp.max(0) as f32 / 32.0).min(1.0)); }
++    for m in moves.iter() { floats.push(m.disabled as i32 as f32); }
++    for m in moves.iter() {
++        let c = &m.choice;
++        floats.push(c.base_power / 150.0);
++        floats.push(c.accuracy / 100.0);
++        let cat = c.category.clone() as usize;
++        for k in 0..3 { floats.push((cat == k) as i32 as f32); }
++        floats.push(c.priority as f32 / 3.0);
++    }
++}
++
++fn encode_side_globals(side: &Side, floats: &mut Vec<f32>) {
++    for b in [side.attack_boost, side.defense_boost, side.special_attack_boost, side.special_defense_boost,
++              side.speed_boost, side.accuracy_boost, side.evasion_boost] { floats.push(b as f32 / 6.0); }
++    let sc = &side.side_conditions;
++    floats.push(sc.stealth_rock as f32);
++    floats.push(sc.spikes as f32 / 3.0);
++    floats.push(sc.toxic_spikes as f32 / 2.0);
++    floats.push(sc.sticky_web as f32);
++    floats.push((sc.reflect > 0) as i32 as f32);
++    floats.push((sc.light_screen > 0) as i32 as f32);
++    floats.push((sc.aurora_veil > 0) as i32 as f32);
++    floats.push((sc.tailwind > 0) as i32 as f32);
++    floats.push(sc.toxic_count as f32 / 16.0);
++    floats.push((side.substitute_health > 0) as i32 as f32);
++    floats.push(side.force_switch as i32 as f32);
++    let used_tera = side.pokemon.pkmn.iter().any(|p| p.terastallized);
++    floats.push(used_tera as i32 as f32);
++    floats.push((side.wish.0 > 0) as i32 as f32);
++    // 7 boosts + 9 side conditions + 4 flags = 20 per side
++}
++
++// ---- Self-play environment (unaware neural training) -------------------
++// Battles live in Rust; Python only sees action slots:
++// 0-3 Move(i), 4-7 MoveTera(i), 8-13 Switch(p), 14 None.
++const ACTION_SLOTS: usize = 15;
++
++fn choice_slot(choice: &MoveChoice) -> Option<usize> {
++    match choice {
++        MoveChoice::Move(i) => Some(*i as usize),
++        MoveChoice::MoveTera(i) => Some(4 + *i as usize),
++        MoveChoice::Switch(p) => Some(8 + *p as usize),
++        MoveChoice::None => Some(14),
++        _ => None,
++    }
++}
++
++fn slot_choice(options: &[MoveChoice], slot: usize) -> Option<MoveChoice> {
++    options.iter().find(|c| choice_slot(c) == Some(slot)).cloned()
++}
++
++#[pyclass(name = "Env")]
++pub struct PyEnv {
++    states: Vec<State>,
++    rng: rand::rngs::StdRng,
++}
++
++#[pymethods]
++impl PyEnv {
++    #[new]
++    #[pyo3(signature = (states, seed=0))]
++    fn new(states: Vec<String>, seed: u64) -> PyResult<Self> {
++        use rand::SeedableRng;
++        let states = states.iter().map(|s| State::deserialize(s)).collect();
++        Ok(PyEnv { states, rng: rand::rngs::StdRng::seed_from_u64(seed) })
++    }
++
++    fn __len__(&self) -> usize {
++        self.states.len()
++    }
++
++    fn reset(&mut self, index: usize, state: String) {
++        self.states[index] = State::deserialize(&state);
++    }
++
++    fn serialize(&self, index: usize) -> String {
++        self.states[index].serialize()
++    }
++
++    /// Legal action mask (15 slots) for each side.
++    fn masks(&self, index: usize) -> (Vec<bool>, Vec<bool>) {
++        let (s1, s2) = self.states[index].root_get_all_options();
++        let mut m1 = vec![false; ACTION_SLOTS];
++        let mut m2 = vec![false; ACTION_SLOTS];
++        for c in s1.iter() { if let Some(i) = choice_slot(c) { m1[i] = true; } }
++        for c in s2.iter() { if let Some(i) = choice_slot(c) { m2[i] = true; } }
++        (m1, m2)
++    }
++
++
++    /// (ints, mon_floats, global_floats) for `perspective` (1 or 2), flattened.
++    fn observe(&self, index: usize, perspective: u8) -> (Vec<i32>, Vec<f32>, Vec<f32>) {
++        let st = &self.states[index];
++        let (me, foe) = if perspective == 2 { (&st.side_two, &st.side_one) } else { (&st.side_one, &st.side_two) };
++        let mut ints = Vec::with_capacity(12 * OBS_INTS_PER_MON + 2);
++        let mut mons = Vec::with_capacity(12 * OBS_FLOATS_PER_MON);
++        for side in [me, foe] {
++            let ord = order(side);
++            for (k, i) in ord.iter().enumerate() {
++                encode_mon(&side.pokemon.pkmn[*i], k == 0, &mut ints, &mut mons);
++            }
++        }
++        ints.push(st.weather.weather_type.clone() as i32);
++        ints.push(st.terrain.terrain_type.clone() as i32);
++        let mut glob = Vec::with_capacity(OBS_GLOBAL_FLOATS);
++        encode_side_globals(me, &mut glob);
++        encode_side_globals(foe, &mut glob);
++        assert_eq!(glob.len(), OBS_GLOBAL_FLOATS);
++        (ints, mons, glob)
++    }
++
++    /// Slot -> team position map for switches seen from `perspective`: the
++    /// observation orders the team active-first, the action slots use engine indices.
++    fn switch_order(&self, index: usize, perspective: u8) -> Vec<usize> {
++        let st = &self.states[index];
++        let side = if perspective == 2 { &st.side_two } else { &st.side_one };
++        order(side).to_vec()
++    }
++
++
++    /// Every battle, both perspectives (env 0 side 1, env 0 side 2, env 1 side 1, ...),
++    /// as raw little-endian buffers: (ints i32, mon floats f32, global floats f32,
++    /// switch order i64, masks u8). Python wraps them with numpy.frombuffer.
++    fn observe_all<'py>(&self, py: Python<'py>) -> (Bound<'py, pyo3::types::PyBytes>, Bound<'py, pyo3::types::PyBytes>,
++            Bound<'py, pyo3::types::PyBytes>, Bound<'py, pyo3::types::PyBytes>, Bound<'py, pyo3::types::PyBytes>) {
++        let n = self.states.len() * 2;
++        let mut ints: Vec<u8> = Vec::with_capacity(n * 122 * 4);
++        let mut mons: Vec<u8> = Vec::with_capacity(n * 12 * OBS_FLOATS_PER_MON * 4);
++        let mut glob: Vec<u8> = Vec::with_capacity(n * OBS_GLOBAL_FLOATS * 4);
++        let mut ord: Vec<u8> = Vec::with_capacity(n * 6 * 8);
++        let mut masks: Vec<u8> = Vec::with_capacity(n * ACTION_SLOTS);
++        for index in 0..self.states.len() {
++            let (m1, m2) = self.masks(index);
++            for perspective in [1u8, 2u8] {
++                let (i, m, g) = self.observe(index, perspective);
++                for v in i { ints.extend_from_slice(&v.to_le_bytes()); }
++                for v in m { mons.extend_from_slice(&v.to_le_bytes()); }
++                for v in g { glob.extend_from_slice(&v.to_le_bytes()); }
++                for v in self.switch_order(index, perspective) { ord.extend_from_slice(&(v as i64).to_le_bytes()); }
++                for v in if perspective == 1 { &m1 } else { &m2 } { masks.push(*v as u8); }
++            }
++        }
++        (pyo3::types::PyBytes::new(py, &ints), pyo3::types::PyBytes::new(py, &mons), pyo3::types::PyBytes::new(py, &glob),
++         pyo3::types::PyBytes::new(py, &ord), pyo3::types::PyBytes::new(py, &masks))
++    }
++
++    /// One turn in every battle: actions[2i] for side one, actions[2i+1] for side two.
++    fn step_all(&mut self, actions: Vec<usize>) -> PyResult<Vec<f32>> {
++        let mut out = Vec::with_capacity(self.states.len());
++        for index in 0..self.states.len() {
++            out.push(self.step(index, actions[2 * index], actions[2 * index + 1])?);
++        }
++        Ok(out)
++    }
++
++
++    /// Slot chosen by poke-engine's own MCTS (perfect information) for `side`:
++    /// the benchmark opponent for the network.
++    fn mcts_action(&self, index: usize, side: u8, iterations: u32) -> usize {
++        let mut state = self.states[index].clone();
++        let (s1, s2) = state.root_get_all_options();
++        let result = poke_engine::mcts::perform_mcts(&mut state, s1, s2, Duration::from_secs(30), iterations);
++        let options = if side == 2 { result.s2 } else { result.s1 };
++        let best = options.iter().max_by_key(|o| o.visits).map(|o| o.move_choice.clone());
++        best.and_then(|c| choice_slot(&c)).unwrap_or(14)
++    }
++
++
++    /// MCTS visit share per action slot (15) for both sides: the search policy
++    /// the network learns to imitate (expert iteration).
++    fn mcts_policy(&self, index: usize, iterations: u32) -> (Vec<f32>, Vec<f32>) {
++        let mut state = self.states[index].clone();
++        let (s1, s2) = state.root_get_all_options();
++        let result = poke_engine::mcts::perform_mcts(&mut state, s1, s2, Duration::from_secs(30), iterations);
++        let share = |side: &Vec<poke_engine::mcts::MctsSideResult>| {
++            let total: u32 = side.iter().map(|o| o.visits).sum::<u32>().max(1);
++            let mut out = vec![0.0f32; ACTION_SLOTS];
++            for o in side.iter() {
++                if let Some(slot) = choice_slot(&o.move_choice) { out[slot] += o.visits as f32 / total as f32; }
++            }
++            out
++        };
++        (share(&result.s1), share(&result.s2))
++    }
++
++
++    /// (slot, Foul Play-format name) of every legal option for `side`, e.g.
++    /// (4, "earthquake-tera") or (9, "switch gliscor").
++    fn option_names(&self, index: usize, side: u8) -> Vec<(usize, String)> {
++        let state = &self.states[index];
++        let (s1, s2) = state.root_get_all_options();
++        let (options, own) = if side == 2 { (s2, &state.side_two) } else { (s1, &state.side_one) };
++        options.iter().filter_map(|c| choice_slot(c).map(|slot| (slot, movechoice_to_string(own, c)))).collect()
++    }
++
++    /// 0 ongoing, 1 side one won, -1 side two won.
++    fn winner(&self, index: usize) -> f32 {
++        self.states[index].battle_is_over()
++    }
++
++    /// Plays one turn (outcome sampled by its probability); returns winner().
++    fn step(&mut self, index: usize, a1: usize, a2: usize) -> PyResult<f32> {
++        use rand::Rng;
++        let state = &mut self.states[index];
++        let (s1, s2) = state.root_get_all_options();
++        let c1 = slot_choice(&s1, a1).ok_or_else(|| PyErr::new::<pyo3::exceptions::PyValueError, _>(format!("illegal s1 slot {}", a1)))?;
++        let c2 = slot_choice(&s2, a2).ok_or_else(|| PyErr::new::<pyo3::exceptions::PyValueError, _>(format!("illegal s2 slot {}", a2)))?;
++        let outcomes = generate_instructions_from_move_pair(state, &c1, &c2, false);
++        let total: f32 = outcomes.iter().map(|o| o.percentage.max(0.0)).sum();
++        let mut pick = self.rng.random_range(0.0..total.max(1e-6));
++        let mut chosen = outcomes.len() - 1;
++        for (i, o) in outcomes.iter().enumerate() {
++            pick -= o.percentage.max(0.0);
++            if pick <= 0.0 { chosen = i; break; }
++        }
++        state.apply_instructions(&outcomes[chosen].instruction_list);
++        Ok(state.battle_is_over())
++    }
++}
++
+ #[pymodule]
+ #[pyo3(name = "poke_engine")]
+ fn py_poke_engine(m: &Bound<'_, PyModule>) -> PyResult<()> {
+@@ -1130,6 +1388,7 @@
+     m.add_function(wrap_pyfunction!(generate_instructions, m)?)?;
+     m.add_function(wrap_pyfunction!(id, m)?)?;
+     m.add_function(wrap_pyfunction!(mcts, m)?)?;
++    m.add_class::<PyEnv>()?;
+     m.add_class::<PyState>()?;
+     m.add_class::<PySide>()?;
+     m.add_class::<PySideConditions>()?;
+--- a/poke-engine-py/Cargo.toml
++++ b/poke-engine-py/Cargo.toml
+@@ -11,6 +11,7 @@
+ [dependencies]
+ pyo3 = { version = "0.29.0", features = ["extension-module"] }
+ poke-engine = { path = "../" }
++rand = "0.9.3"
+ 
+ [features]
+ default = ["poke-engine/gen4"]
+--- a/python/poke_engine/__init__.py
++++ b/python/poke_engine/__init__.py
+@@ -146,7 +146,11 @@
+ 
+ 
+ def monte_carlo_tree_search(
+-    state: State, duration_ms: int = 1000, iterations: int = 0, threads: int = 1
++    state: State,
++    duration_ms: int = 1000,
++    iterations: int = 0,
++    threads: int = 1,
++    rm_c: float = 0.0,
+ ) -> MctsResult:
+     """
+     Perform monte-carlo-tree-search on the given state and for the given duration
+@@ -162,7 +166,7 @@
+     :return: the result of the search
+     :rtype: MctsResult
+     """
+-    return MctsResult._from_rust(mcts(state, duration_ms, iterations, threads))
++    return MctsResult._from_rust(mcts(state, duration_ms, iterations, threads, rm_c))
+ 
+ 
+ def iterative_deepening_expectiminimax(

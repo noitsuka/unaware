@@ -1,0 +1,63 @@
+Darkrai @ Choice Specs
+Ability: Bad Dreams
+Tera Type: Dark
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Ice Beam
+- Dark Pulse
+- Focus Blast
+- Trick
+
+Garchomp @ Rocky Helmet
+Ability: Rough Skin
+Tera Type: Ghost
+EVs: 248 HP / 216 Def / 44 Spe
+Impish Nature
+- Stealth Rock
+- Spikes
+- Earthquake
+- Dragon Tail
+
+Alomomola @ Assault Vest
+Ability: Regenerator
+Tera Type: Normal
+EVs: 244 HP / 12 Def / 252 SpD
+Sassy Nature
+IVs: 0 Spe
+- Flip Turn
+- Aqua Jet
+- Mirror Coat
+- Body Slam
+
+Corviknight @ Leftovers
+Ability: Pressure
+Tera Type: Ice
+EVs: 252 HP / 4 Def / 252 SpD
+Careful Nature
+IVs: 16 Spe
+- U-turn
+- Defog
+- Roost
+- Brave Bird
+
+Weezing-Galar @ Leftovers
+Ability: Neutralizing Gas
+Tera Type: Dragon
+EVs: 248 HP / 252 Def / 8 Spe
+Bold Nature
+IVs: 0 Atk
+- Sludge Bomb
+- Defog
+- Pain Split
+- Will-O-Wisp
+
+Ogerpon (F) @ Scope Lens
+Ability: Defiant
+Tera Type: Grass
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Ivy Cudgel
+- Swords Dance
+- Knock Off
+- Encore

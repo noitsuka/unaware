@@ -1,0 +1,59 @@
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Water
+EVs: 244 HP / 248 Def / 16 Spe
+Impish Nature
+- Stealth Rock
+- Earthquake
+- Knock Off
+- Protect
+
+Alomomola @ Heavy-Duty Boots
+Ability: Regenerator
+Tera Type: Fairy
+EVs: 4 HP / 252 Def / 252 SpD
+Relaxed Nature
+- Wish
+- Protect
+- Flip Turn
+- Scald
+
+Corviknight @ Rocky Helmet
+Ability: Pressure
+Tera Type: Dragon
+EVs: 252 HP / 168 Def / 88 SpD
+Impish Nature
+- Brave Bird
+- Defog
+- U-turn
+- Roost
+
+Garganacl @ Leftovers
+Ability: Purifying Salt
+Tera Type: Water
+EVs: 252 HP / 4 Def / 252 SpD
+Careful Nature
+- Salt Cure
+- Recover
+- Protect
+- Body Press
+
+Kingambit @ Leftovers
+Ability: Supreme Overlord
+Tera Type: Fairy
+EVs: 252 HP / 252 Atk / 4 SpD
+Adamant Nature
+- Swords Dance
+- Kowtow Cleave
+- Sucker Punch
+- Iron Head
+
+Dragapult @ Heavy-Duty Boots
+Ability: Infiltrator
+Tera Type: Ghost
+EVs: 252 SpA / 4 SpD / 252 Spe
+Timid Nature
+- Draco Meteor
+- Hex
+- Will-O-Wisp
+- U-turn

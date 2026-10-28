@@ -1,0 +1,60 @@
+Landorus-Therian @ Rocky Helmet
+Ability: Intimidate
+Tera Type: Water
+EVs: 252 HP / 216 Def / 40 Spe
+Impish Nature
+- Stealth Rock
+- Earthquake
+- U-turn
+- Taunt
+
+Ogerpon-Wellspring @ Wellspring Mask
+Ability: Water Absorb
+Tera Type: Water
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Ivy Cudgel
+- Knock Off
+- U-turn
+- Encore
+
+Kingambit @ Leftovers
+Ability: Supreme Overlord
+Tera Type: Dark
+EVs: 112 HP / 252 Atk / 144 Spe
+Adamant Nature
+- Swords Dance
+- Kowtow Cleave
+- Sucker Punch
+- Iron Head
+
+Dragapult @ Heavy-Duty Boots
+Ability: Infiltrator
+Tera Type: Ghost
+EVs: 252 SpA / 4 SpD / 252 Spe
+Timid Nature
+- Draco Meteor
+- Hex
+- Will-O-Wisp
+- U-turn
+
+Iron Valiant @ Booster Energy
+Ability: Quark Drive
+Tera Type: Fairy
+EVs: 4 Atk / 252 SpA / 252 Spe
+Naive Nature
+- Moonblast
+- Close Combat
+- Knock Off
+- Encore
+
+Gholdengo @ Heavy-Duty Boots
+Ability: Good as Gold
+Tera Type: Steel
+EVs: 252 HP / 4 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Nasty Plot
+- Make It Rain
+- Shadow Ball
+- Recover

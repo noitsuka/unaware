@@ -1,0 +1,62 @@
+Weezing-Galar @ Heavy-Duty Boots
+Ability: Neutralizing Gas
+Tera Type: Ghost
+EVs: 252 HP / 244 Def / 12 Spe
+Bold Nature
+IVs: 0 Atk
+- Toxic Spikes
+- Will-O-Wisp
+- Defog
+- Pain Split
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Dark
+EVs: 244 HP / 248 SpD / 16 Spe
+Careful Nature
+- Swords Dance
+- Earthquake
+- Knock Off
+- Protect
+
+Blissey @ Leftovers
+Ability: Natural Cure
+Tera Type: Water
+EVs: 20 HP / 252 Def / 236 SpD
+Calm Nature
+IVs: 0 Atk
+- Stealth Rock
+- Seismic Toss
+- Soft-Boiled
+- Calm Mind
+
+Corviknight @ Leftovers
+Ability: Pressure
+Tera Type: Dragon
+EVs: 136 HP / 252 Def / 120 Spe
+Bold Nature
+IVs: 0 Atk
+- Iron Defense
+- Roost
+- Body Press
+- Defog
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Fighting
+EVs: 248 HP / 252 Def / 8 Spe
+Impish Nature
+- Curse
+- Waterfall
+- Sleep Talk
+- Rest
+
+Toxapex @ Covert Cloak
+Ability: Regenerator
+Tera Type: Steel
+EVs: 248 HP / 136 Def / 124 SpD
+Impish Nature
+- Poison Jab
+- Recover
+- Haze
+- Toxic

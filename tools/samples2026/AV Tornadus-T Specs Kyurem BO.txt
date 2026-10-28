@@ -1,0 +1,61 @@
+Hatterene @ Rocky Helmet
+Ability: Magic Bounce
+Tera Type: Flying
+EVs: 248 HP / 204 Def / 56 Spe
+Bold Nature
+- Psychic Noise
+- Draining Kiss
+- Pain Split
+- Nuzzle
+
+Great Tusk @ Rocky Helmet
+Ability: Protosynthesis
+Tera Type: Steel
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Rapid Spin
+- Ice Spinner
+- Headlong Rush
+- Stealth Rock
+
+Tornadus-Therian @ Assault Vest
+Ability: Regenerator
+Tera Type: Normal
+EVs: 176 HP / 92 SpD / 240 Spe
+Timid Nature
+- Bleakwind Storm
+- Heat Wave
+- Knock Off
+- U-turn
+
+Kyurem @ Choice Specs
+Ability: Pressure
+Tera Type: Ice
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Blizzard
+- Ice Beam
+- Freeze-Dry
+- Earth Power
+
+Slowking-Galar @ Black Sludge
+Ability: Regenerator
+Tera Type: Grass
+EVs: 248 HP / 252 Def / 8 SpD
+Relaxed Nature
+IVs: 0 Atk / 0 Spe
+- Sludge Bomb
+- Future Sight
+- Chilly Reception
+- Trick
+
+Kingambit @ Leftovers
+Ability: Supreme Overlord
+Tera Type: Ghost
+EVs: 244 HP / 252 Atk / 12 Spe
+Adamant Nature
+- Kowtow Cleave
+- Sucker Punch
+- Iron Head
+- Swords Dance

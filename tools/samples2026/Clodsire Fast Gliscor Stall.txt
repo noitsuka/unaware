@@ -1,0 +1,59 @@
+Clodsire @ Heavy-Duty Boots
+Ability: Unaware
+Tera Type: Steel
+EVs: 248 HP / 8 Def / 252 SpD
+Careful Nature
+- Poison Jab
+- Earthquake
+- Recover
+- Spikes
+
+Toxapex @ Leftovers
+Ability: Regenerator
+Tera Type: Steel
+EVs: 252 HP / 244 Def / 12 Spe
+Impish Nature
+- Infestation
+- Baneful Bunker
+- Poison Jab
+- Recover
+
+Corviknight @ Leftovers
+Ability: Pressure
+Tera Type: Dragon
+EVs: 252 HP / 4 Def / 252 SpD
+Careful Nature
+- Protect
+- Brave Bird
+- Roost
+- Defog
+
+Dondozo @ Leftovers
+Ability: Unaware
+Tera Type: Dark
+EVs: 248 HP / 252 Def / 8 SpD
+Impish Nature
+- Curse
+- Crunch
+- Rest
+- Sleep Talk
+
+Clefable @ Sticky Barb
+Ability: Magic Guard
+Tera Type: Water
+EVs: 252 HP / 252 Def / 4 Spe
+Bold Nature
+- Moonblast
+- Knock Off
+- Moonlight
+- Stealth Rock
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Dark
+EVs: 244 HP / 12 Def / 252 Spe
+Jolly Nature
+- Protect
+- Substitute
+- Knock Off
+- Toxic

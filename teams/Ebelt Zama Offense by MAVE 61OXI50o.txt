@@ -1,0 +1,62 @@
+Zamazenta @ Expert Belt
+Ability: Dauntless Shield
+Tera Type: Dark
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Close Combat
+- Crunch
+- Stone Edge
+- Ice Fang
+
+Ogerpon-Wellspring (F) @ Wellspring Mask
+Ability: Water Absorb
+Tera Type: Water
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Ivy Cudgel
+- Power Whip
+- Knock Off
+- U-turn
+
+Slowking-Galar @ Assault Vest
+Ability: Regenerator
+Tera Type: Water
+EVs: 216 HP / 212 SpA / 80 SpD
+Modest Nature
+IVs: 0 Atk
+- Psyshock
+- Flamethrower
+- Sludge Bomb
+- Ice Beam
+
+Great Tusk @ Rocky Helmet
+Ability: Protosynthesis
+Shiny: Yes
+Tera Type: Fire
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Headlong Rush
+- Ice Spinner
+- Rapid Spin
+- Stealth Rock
+
+Kingambit (M) @ Leftovers
+Ability: Supreme Overlord
+Tera Type: Ghost
+EVs: 212 HP / 252 Atk / 44 Spe
+Adamant Nature
+- Kowtow Cleave
+- Sucker Punch
+- Low Kick
+- Swords Dance
+
+Zapdos @ Heavy-Duty Boots
+Ability: Static
+Tera Type: Fairy
+EVs: 248 HP / 204 Def / 56 Spe
+Bold Nature
+IVs: 0 Atk
+- Hurricane
+- Volt Switch
+- Thunder Wave
+- Roost

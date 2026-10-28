@@ -1,0 +1,7 @@
+Foul Play (https://github.com/pmariglia/foul-play), commit 8f541f80f91f960603673796559f796b10ccf0fb
+(2026-10-03). Licensed under GPL-3.0 (see LICENSE in this folder).
+
+Used as the decision engine through unaware/foulplay_brain.py. One local change:
+fp/battle/protocol.py wraps each protocol handler in try/except, so a single line
+it cannot parse (seen with Revival Blessing on an Illusion Zoroark) no longer
+stops the whole battle loop.

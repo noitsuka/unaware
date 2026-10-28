@@ -1,0 +1,61 @@
+Kingambit @ Leftovers
+Ability: Supreme Overlord
+Tera Type: Ghost
+EVs: 4 HP / 252 Atk / 252 Spe
+Adamant Nature
+- Swords Dance
+- Iron Head
+- Low Kick
+- Sucker Punch
+
+Kommo-o @ Leftovers
+Ability: Soundproof
+Tera Type: Ghost
+EVs: 244 HP / 16 Atk / 248 Spe
+Jolly Nature
+- Substitute
+- Drain Punch
+- Shadow Claw
+- Clangorous Soul
+
+Iron Valiant @ Booster Energy
+Ability: Quark Drive
+Tera Type: Ghost
+EVs: 252 SpA / 4 SpD / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Calm Mind
+- Moonblast
+- Shadow Ball
+- Focus Blast
+
+Kyurem @ Loaded Dice
+Ability: Pressure
+Tera Type: Ground
+EVs: 220 Atk / 36 SpA / 252 Spe
+Naive Nature
+- Dragon Dance
+- Icicle Spear
+- Scale Shot
+- Earth Power
+
+Iron Treads @ Booster Energy
+Ability: Quark Drive
+Tera Type: Ghost
+EVs: 240 HP / 52 Def / 24 SpD / 192 Spe
+Jolly Nature
+- Stealth Rock
+- Earthquake
+- Rapid Spin
+- Endeavor
+
+Iron Crown @ Booster Energy
+Ability: Quark Drive
+Tera Type: Fighting
+EVs: 84 HP / 172 SpA / 252 Spe
+Timid Nature
+IVs: 20 Atk
+- Calm Mind
+- Tachyon Cutter
+- Psychic Noise
+- Focus Blast

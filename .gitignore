@@ -1,0 +1,22 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+config.json
+cache/
+logs/
+replays/
+/data/
+vendor/foulplay/fp/data/smogon_stats_cache/
+vendor/foulplay/fp/data/pkmn_sets_cache/
+analyses/
+frontend/node_modules/
+frontend/*.tsbuildinfo
+teams/.trash/
+# Node runtime (rebuild with: cd runtime && npm ci --omit=optional; node.exe from nodejs.org 24.16.0)
+runtime/node.exe
+runtime/node_modules/
+tools/__pycache__/
+*.lnk

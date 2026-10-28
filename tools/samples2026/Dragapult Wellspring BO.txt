@@ -1,0 +1,60 @@
+Dragapult @ Heavy-Duty Boots
+Ability: Infiltrator
+Tera Type: Fairy
+EVs: 16 Atk / 240 SpA / 252 Spe
+Naive Nature
+- Dragon Darts
+- Hex
+- U-turn
+- Will-O-Wisp
+
+Gliscor @ Toxic Orb
+Ability: Poison Heal
+Tera Type: Fairy
+EVs: 244 HP / 168 SpD / 96 Spe
+Careful Nature
+- Earthquake
+- Protect
+- Toxic Spikes
+- Toxic
+
+Ogerpon-Wellspring (F) @ Wellspring Mask
+Ability: Water Absorb
+Tera Type: Water
+EVs: 244 Atk / 12 Def / 252 Spe
+Jolly Nature
+- Ivy Cudgel
+- Knock Off
+- U-turn
+- Taunt
+
+Iron Crown @ Booster Energy
+Ability: Quark Drive
+Tera Type: Fighting
+EVs: 80 HP / 4 Def / 172 SpA / 252 Spe
+Timid Nature
+IVs: 20 Atk
+- Tachyon Cutter
+- Psychic
+- Focus Blast
+- Calm Mind
+
+Ting-Lu @ Rocky Helmet
+Ability: Vessel of Ruin
+Tera Type: Water
+EVs: 24 HP / 4 Atk / 252 SpD / 228 Spe
+Jolly Nature
+- Heavy Slam
+- Taunt
+- Stealth Rock
+- Ruination
+
+Kingambit @ Air Balloon
+Ability: Supreme Overlord
+Tera Type: Dark
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Kowtow Cleave
+- Low Kick
+- Sucker Punch
+- Swords Dance

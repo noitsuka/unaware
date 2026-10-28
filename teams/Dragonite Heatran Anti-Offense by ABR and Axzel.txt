@@ -1,0 +1,61 @@
+Dragonite @ Heavy-Duty Boots
+Ability: Multiscale
+Tera Type: Normal
+EVs: 252 HP / 236 Atk / 20 Spe
+Adamant Nature
+- Dragon Tail
+- Extreme Speed
+- Earthquake
+- Roost
+
+Ting-Lu @ Leftovers
+Ability: Vessel of Ruin
+Tera Type: Water
+EVs: 252 HP / 24 Def / 232 SpD
+Careful Nature
+- Earthquake
+- Ruination
+- Spikes
+- Whirlwind
+
+Clefable @ Leftovers
+Ability: Magic Guard
+Tera Type: Water
+EVs: 252 HP / 240 Def / 16 Spe
+Bold Nature
+- Calm Mind
+- Moonblast
+- Knock Off
+- Moonlight
+
+Pecharunt @ Heavy-Duty Boots
+Ability: Poison Puppeteer
+Tera Type: Ghost
+EVs: 252 HP / 228 Def / 28 Spe
+Bold Nature
+IVs: 0 Atk
+- Shadow Ball
+- Toxic
+- Parting Shot
+- Recover
+
+Heatran @ Leftovers
+Ability: Flash Fire
+Tera Type: Normal
+EVs: 252 HP / 4 Def / 212 SpD / 40 Spe
+Calm Nature
+IVs: 0 Atk
+- Magma Storm
+- Earth Power
+- Will-O-Wisp
+- Stealth Rock
+
+Zamazenta @ Heavy-Duty Boots
+Ability: Dauntless Shield
+Tera Type: Dark
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Close Combat
+- Crunch
+- Ice Fang
+- Roar

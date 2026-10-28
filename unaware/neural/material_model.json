@@ -1,0 +1,14 @@
+{
+ "weights": [
+  0.0,
+  -0.04055427813827792,
+  0.8563285485228752,
+  -0.007811353098974686,
+  0.5596790348285235
+ ],
+ "features": "1, alive diff, hp diff, alive diff*late, hp diff*late; late=(12-alive)/12; foe counts include unrevealed",
+ "games_all": 388,
+ "games_recent": 50,
+ "fitted_intercept": -0.30343061408672173,
+ "note": "intercept set to 0: an even position is 50%; the fitted -0.30 came from our losing early games"
+}

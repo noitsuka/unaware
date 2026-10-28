@@ -1,0 +1,61 @@
+Zamazenta @ Leftovers
+Ability: Dauntless Shield
+Tera Type: Steel
+EVs: 4 Atk / 252 Def / 252 Spe
+Jolly Nature
+- Body Press
+- Heavy Slam
+- Iron Defense
+- Roar
+
+Iron Hands @ Booster Energy
+Ability: Quark Drive
+Tera Type: Bug
+EVs: 252 Atk / 4 SpD / 252 Spe
+Adamant Nature
+- Supercell Slam
+- Close Combat
+- Ice Punch
+- Heavy Slam
+
+Ceruledge (F) @ Life Orb
+Ability: Weak Armor
+Tera Type: Ghost
+EVs: 252 Atk / 4 SpD / 252 Spe
+Adamant Nature
+- Poltergeist
+- Bitter Blade
+- Shadow Sneak
+- Swords Dance
+
+Iron Valiant @ Booster Energy
+Ability: Quark Drive
+Tera Type: Steel
+EVs: 248 SpA / 8 SpD / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Moonblast
+- Thunderbolt
+- Focus Blast
+- Calm Mind
+
+Deoxys-Speed @ Light Clay
+Ability: Pressure
+Tera Type: Steel
+EVs: 248 HP / 8 Def / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Reflect
+- Light Screen
+- Taunt
+- Teleport
+
+Glimmora (F) @ Red Card
+Ability: Toxic Debris
+Tera Type: Ghost
+EVs: 248 HP / 252 Def / 8 Spe
+Bold Nature
+- Earth Power
+- Mortal Spin
+- Stealth Rock
+- Spikes

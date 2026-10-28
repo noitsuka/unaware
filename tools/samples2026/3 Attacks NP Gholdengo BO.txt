@@ -1,0 +1,62 @@
+Kyurem @ Assault Vest
+Ability: Pressure
+Tera Type: Poison
+EVs: 252 Def / 144 SpA / 112 Spe
+Modest Nature
+IVs: 0 Atk
+- Earth Power
+- Ice Beam
+- Freeze-Dry
+- Body Press
+
+Hatterene @ Rocky Helmet
+Ability: Magic Bounce
+Tera Type: Flying
+EVs: 248 HP / 204 Def / 56 Spe
+Bold Nature
+IVs: 0 Atk
+- Psychic Noise
+- Draining Kiss
+- Pain Split
+- Nuzzle
+
+Darkrai @ Choice Scarf
+Ability: Bad Dreams
+EVs: 252 SpA / 4 SpD / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Dark Pulse
+- Ice Beam
+- Will-O-Wisp
+- Trick
+
+Great Tusk @ Leftovers
+Ability: Protosynthesis
+Tera Type: Poison
+EVs: 232 HP / 88 Def / 188 Spe
+Impish Nature
+- Headlong Rush
+- Ice Spinner
+- Stealth Rock
+- Rapid Spin
+
+Dragonite (F) @ Heavy-Duty Boots
+Ability: Multiscale
+Tera Type: Normal
+EVs: 248 HP / 108 Atk / 152 Spe
+Adamant Nature
+- Dragon Dance
+- Extreme Speed
+- Earthquake
+- Roost
+
+Gholdengo @ Shuca Berry
+Ability: Good as Gold
+Tera Type: Flying
+EVs: 120 HP / 192 SpA / 196 Spe
+Modest Nature
+IVs: 0 Atk
+- Nasty Plot
+- Make It Rain
+- Thunderbolt
+- Psyshock

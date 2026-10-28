@@ -1,0 +1,61 @@
+Hawlucha (F) @ Grassy Seed
+Ability: Unburden
+Tera Type: Steel
+EVs: 192 HP / 252 Atk / 64 Spe
+Adamant Nature
+- Swords Dance
+- Acrobatics
+- Low Kick
+- Roost
+
+Samurott-Hisui (F) @ Assault Vest
+Ability: Sharpness
+Tera Type: Poison
+EVs: 160 HP / 32 Atk / 248 SpD / 68 Spe
+Adamant Nature
+- Ceaseless Edge
+- Sucker Punch
+- Knock Off
+- Flip Turn
+
+Rillaboom (F) @ Lum Berry
+Ability: Grassy Surge
+Tera Type: Fire
+EVs: 112 HP / 252 Atk / 144 Spe
+Adamant Nature
+- Swords Dance
+- Grassy Glide
+- Knock Off
+- Wood Hammer
+
+Gholdengo @ Choice Scarf
+Ability: Good as Gold
+Tera Type: Steel
+EVs: 252 SpA / 4 SpD / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Make It Rain
+- Shadow Ball
+- Recover
+- Trick
+
+Kyurem @ Assault Vest
+Ability: Pressure
+Tera Type: Poison
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Earth Power
+- Focus Blast
+- Freeze-Dry
+- Ice Beam
+
+Landorus-Therian (M) @ Rocky Helmet
+Ability: Intimidate
+Tera Type: Ghost
+EVs: 248 HP / 12 Def / 248 Spe
+Timid Nature
+- Stealth Rock
+- Earth Power
+- U-turn
+- Taunt

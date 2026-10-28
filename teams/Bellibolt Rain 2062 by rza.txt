@@ -1,0 +1,60 @@
+Bellibolt @ Assault Vest
+Ability: Electromorphosis
+Tera Type: Fairy
+EVs: 248 HP / 252 SpA / 8 Spe
+Modest Nature
+IVs: 0 Atk
+- Thunder
+- Weather Ball
+- Parabolic Charge
+- Volt Switch
+
+Basculegion (M) @ Choice Band
+Ability: Adaptability
+Tera Type: Water
+EVs: 252 Atk / 4 SpD / 252 Spe
+Adamant Nature
+- Wave Crash
+- Flip Turn
+- Aqua Jet
+- Psychic Fangs
+
+Dragonite @ Eject Pack
+Ability: Multiscale
+Tera Type: Steel
+EVs: 40 Atk / 252 SpA / 216 Spe
+Rash Nature
+- Draco Meteor
+- Hurricane
+- Low Kick
+- Roost
+
+Iron Treads @ Eject Button
+Ability: Quark Drive
+Tera Type: Ghost
+EVs: 248 HP / 92 SpA / 168 Spe
+Timid Nature
+- Earth Power
+- Rapid Spin
+- Stealth Rock
+- Volt Switch
+
+Barraskewda @ Choice Band
+Ability: Swift Swim
+Tera Type: Water
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Liquidation
+- Flip Turn
+- Aqua Jet
+- Close Combat
+
+Pelipper @ Damp Rock
+Ability: Drizzle
+Tera Type: Grass
+EVs: 248 HP / 252 Def / 8 SpD
+Bold Nature
+- Surf
+- Hurricane
+- U-turn
+- Roost
